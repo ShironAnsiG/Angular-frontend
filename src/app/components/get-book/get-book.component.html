@@ -1,0 +1,29 @@
+<button class="new-button" (click)="goToBook()">Add New Customer</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Genre</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (book of books; track book.id) {
+      <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.genre }}</td>
+        <td>
+          <button class="update-button" (click)="updatebook(book.id)">Update</button>
+          <button class="delete-button" (click)="deleteBookById(book.id)">Delete</button>
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="4">No books available.</td>
+      </tr>
+    }
+  </tbody>
+</table>

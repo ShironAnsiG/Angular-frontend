@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="form-container">
+      <h2 class="form-title">Update New Book</h2>
+      <form [formGroup]="updateBookForm" >
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required formControlName="title" />
+        </div>
+  
+        <div class="form-group">
+          <label for="author">Author:</label>
+          <input type="text" id="author" name="author" required formControlName="author" />
+        </div>
+  
+        <div class="form-group">
+          <label for="genre">Genre:</label>
+          <input type="text" id="genre" name="genre" required formControlName="genre" />
+        </div>
+  
+        <button type="submit">Update</button> 
+        
+      </form>
+    </div>
+  </div>
