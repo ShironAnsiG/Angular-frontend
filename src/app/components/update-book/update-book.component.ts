@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../../service/book.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -13,10 +13,12 @@ export class UpdateBookComponent implements OnInit {
   updateBookForm!: FormGroup;
   id!: number;
   bookService: any;
+  
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private service: BookService,
+    private router: Router,
     private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -41,9 +43,12 @@ export class UpdateBookComponent implements OnInit {
     });
   }
 
-  deleteBookById(id:number){
-    this.bookService.deleteBookById(id).subscribe((res: any) =>{
+  updateBookById(){
+    this.service.updateBookById(this.id,this.updateBookForm.value).subscribe((res) => {
       console.log(res);
-    })
+      this.router.navigateByUrl("");
+  });
+
   }
+ 
 }

@@ -1,23 +1,23 @@
 <div class="container">
   <div class="form-container">
-    <h2 class="form-title">Add New Book</h2>
+    <h2 class="form-title">ADD NEW BOOK</h2>
     <form [formGroup]="postBookForm" (ngSubmit)="postBook()">
       <div class="form-group">
-        <label for="title">Title:</label>
+        <label for="title">TITLE:</label>
         <input type="text" id="title" name="title" required formControlName="title" />
       </div>
 
       <div class="form-group">
-        <label for="author">Author:</label>
+        <label for="author">AUTHOR:</label>
         <input type="text" id="author" name="author" required formControlName="author" />
       </div>
 
       <div class="form-group">
-        <label for="genre">Genre:</label>
+        <label for="genre">GENRE:</label>
         <input type="text" id="genre" name="genre" required formControlName="genre" />
       </div>
 
-      <button type="submit" (click)="postBook()">Add</button>
+      <button type="submit" (click)="postBook()">ADD</button>
     </form>
   </div>
 </div>

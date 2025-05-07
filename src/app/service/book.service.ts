@@ -9,10 +9,7 @@ const BASIC_URL = "http://localhost:8090";
   providedIn: 'root'
 })
 export class BookService {
-  updateBook(bookData: any) {
-    throw new Error('Method not implemented.');
-  }
-
+  
   constructor(private http: HttpClient) { }
 
   postBook(book: any): Observable<any>{
@@ -25,6 +22,10 @@ export class BookService {
 
   getBookById(id: number): Observable<any>{
     return this.http.get(BASIC_URL+"/book/v1/getBook/" + id);
+  }
+
+  updateBookById(id: number, book: any): Observable<any>{
+    return this.http.put(BASIC_URL+"/book/v1/updateBook/" + id, book);
   }
 
   deleteBookById(id: number): Observable<any>{

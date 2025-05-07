@@ -33,7 +33,7 @@ export class PostBookComponent implements OnInit {
     this.bookService.postBook(this.postBookForm.value).subscribe((res)=>{
       console.log(res);
       this.router.navigateByUrl("");
-    })
+    });
     
   }
 }
