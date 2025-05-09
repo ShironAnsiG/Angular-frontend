@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  background: #9e72e4;
+  min-height: 80vh;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  background: rgb(227, 230, 233);
+}
+
+.form-field {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}

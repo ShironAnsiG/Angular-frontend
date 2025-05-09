@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PostBookComponent } from './components/post-book/post-book.component';
 import { GetBookComponent } from './components/get-book/get-book.component';
-import { UpdateBookComponent } from './components/update-book/update-book.component';
+import { BookFormComponent } from './components/book-form/book-form.component';
 
 const routes: Routes = [
-  {path: 'book', component: PostBookComponent},
-  {path: "", component: GetBookComponent},
-  {path: "book/:id", component: UpdateBookComponent}
+  { path: 'books', component: GetBookComponent },
+  { path: 'add', component: BookFormComponent },         
+  { path: 'edit/:id', component: BookFormComponent }
 
 ];
 
