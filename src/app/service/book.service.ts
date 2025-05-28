@@ -9,8 +9,10 @@ const BASIC_URL = "http://localhost:8090";
   providedIn: 'root'
 })
 export class BookService {
+
   
   constructor(private http: HttpClient) { }
+
 
   postBook(book: any): Observable<any>{
     return this.http.post(BASIC_URL+"/book/v1/addBook",book);

@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BookService } from '../../service/book.service';
+
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+
+
 
 
 @Component({
@@ -24,15 +26,19 @@ export class BookFormComponent implements OnInit {
   bookForm!: FormGroup;
   id!: number;
   isEditMode: boolean = false;
+  isAdmin: boolean = false;
+  bookService: any;
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private bookService: BookService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+
   ) {}
 
   ngOnInit() {
+     
     this.bookForm = this.fb.group({
       title: [null, Validators.required],
       author: [null, Validators.required],
@@ -47,7 +53,7 @@ export class BookFormComponent implements OnInit {
   }
 
   getBookById() {
-    this.bookService.getBookById(this.id).subscribe((res) => {
+    this.bookService.getBookById(this.id).subscribe((res: { [key: string]: any; }) => {
       console.log("Fetched book:", res);
       this.bookForm.patchValue(res);
     });
@@ -63,15 +69,18 @@ export class BookFormComponent implements OnInit {
 
   addBook() {
     console.log(this.bookForm.value);
-    this.bookService.postBook(this.bookForm.value).subscribe((res) => {
+    this.bookService.postBook(this.bookForm.value).subscribe({
+      next: (res: any) => {
       console.log(res);
+      alert('Book added successfully!');
       this.router.navigateByUrl('books'); 
+      }
     });
   }
 
   updateBook() {
     console.log(this.bookForm.value);
-    this.bookService.updateBookById(this.id, this.bookForm.value).subscribe((res) => {
+    this.bookService.updateBookById(this.id, this.bookForm.value).subscribe((res: any) => {
       console.log(res);
       this.router.navigateByUrl('books'); 
     });

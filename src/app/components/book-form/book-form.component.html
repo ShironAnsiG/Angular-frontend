@@ -1,13 +1,13 @@
 <div class="container">
   <mat-card class="form-card">
+    <mat-card-title>
+      <h2>{{ isEditMode ? 'UPDATE BOOK' : 'ADD NEW BOOK' }}</h2>
+    </mat-card-title>
     
-      <mat-card-title>
-        <h2>{{ isEditMode ? 'UPDATE BOOK' : 'ADD NEW BOOK' }}</h2>
-      </mat-card-title>
-    
-    <mat-card-content>
+    <!-- Only show the form if the user is an admin -->
+    <mat-card-content *ngIf="isAdmin">
       <form [formGroup]="bookForm" (ngSubmit)="submitForm()">
-        <mat-form-field  class="form-field">
+        <mat-form-field class="form-field">
           <mat-label>TITLE</mat-label>
           <input matInput formControlName="title" required />
         </mat-form-field>
@@ -29,6 +29,10 @@
         </div>
       </form>
     </mat-card-content>
+
+    <!-- Show message if user is not an admin -->
+    <mat-card-content *ngIf="!isAdmin">
+      <p>You do not have permission to access this page.</p>
+    </mat-card-content>
   </mat-card>
 </div>
-   

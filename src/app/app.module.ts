@@ -12,16 +12,22 @@ import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
 import { GetBookComponent } from './components/get-book/get-book.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { BookFormComponent } from './components/book-form/book-form.component';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserComponent } from './component/user.component';
+import { AdminComponent } from './component/admin.component';
+import { HomeComponent } from './component/home.component';
+import { BookService } from './service/book.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-
+    
   ],
   imports: [
     BrowserModule,
@@ -39,9 +45,13 @@ import { BookFormComponent } from './components/book-form/book-form.component';
     GetBookComponent,
     RouterModule,
     CommonModule,
-    BookFormComponent
+    BookFormComponent,
+    LoginComponent,
+    UserComponent,
+    AdminComponent,
+    HomeComponent
 ],
-  providers: [],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
