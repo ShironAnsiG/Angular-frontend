@@ -24,12 +24,24 @@ import { MatTableModule } from '@angular/material/table';
 export class GetBookComponent implements OnInit{
 
   books: any = [];
+  role: string = '';
   constructor(
     private bookService: BookService,
     private router: Router
   ) {}
 
-  updatebook(id: number){
+
+
+  ngOnInit(): void{
+    this.role = localStorage.getItem('role') || '';
+    this.getBook();
+    
+  }
+   isAdmin(): boolean {
+    return this.role === 'ADMIN';
+  } 
+
+   updatebook(id: number){
     this.router.navigate(['/edit', id]);
   }
   
@@ -38,10 +50,7 @@ export class GetBookComponent implements OnInit{
 
   }
 
-  ngOnInit(): void{
-    this.getBook();
-    
-  }
+
   getBook(){
     this.bookService.getBook().subscribe((res)=>{
       console.log(res);

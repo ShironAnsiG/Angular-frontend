@@ -18,15 +18,16 @@ import { CommonModule } from '@angular/common';
 import { BookFormComponent } from './components/book-form/book-form.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { UserComponent } from './component/user.component';
-import { AdminComponent } from './component/admin.component';
-import { HomeComponent } from './component/home.component';
 import { BookService } from './service/book.service';
+import { AdminComponent } from './components/admin/admin.component';
+import { UserComponent } from './components/user/user.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AdminComponent,
+    UserComponent,
     
   ],
   imports: [
@@ -47,9 +48,7 @@ import { BookService } from './service/book.service';
     CommonModule,
     BookFormComponent,
     LoginComponent,
-    UserComponent,
-    AdminComponent,
-    HomeComponent
+
 ],
   providers: [BookService],
   bootstrap: [AppComponent]

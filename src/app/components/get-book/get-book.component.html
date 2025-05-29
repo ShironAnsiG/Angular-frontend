@@ -1,7 +1,7 @@
 <div class="table-container">
-  <button mat-raised-button color="accent" (click)="goToBook()" class="add-button">
-    <mat-icon>add</mat-icon> ADD NEW BOOK
-  </button>
+  <button *ngIf="isAdmin()" mat-raised-button color="accent" (click)="goToBook()" class="add-button">
+  <mat-icon>add</mat-icon> ADD NEW BOOK
+</button>
 
   <table mat-table [dataSource]="books" >
 
@@ -22,14 +22,16 @@
 
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef class="title-header">ACTION</th>
-      <td mat-cell *matCellDef="let book">
-        <button mat-icon-button color="primary" (click)="updatebook(book.id)">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button color="primary" (click)="deleteBookById(book.id)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </td>
+     <td mat-cell *matCellDef="let book">
+  <ng-container *ngIf="isAdmin()">
+    <button mat-icon-button color="primary" (click)="updatebook(book.id)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" (click)="deleteBookById(book.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </ng-container>
+</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="['title', 'author', 'genre', 'action']"></tr>
